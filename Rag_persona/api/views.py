@@ -4,13 +4,14 @@ from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView, UpdateAPIView, ListCreateAPIView
 from rest_framework.permissions import AllowAny
 from .models import Document, CustomUser
-# from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer
 # from transformers import T5ForConditionalGeneration, T5Tokenizer
 import numpy as np
 import torch
-# from transformers import BitsAndBytesConfig
-# from llama_index.core.prompts import PromptTemplate
-# from llama_index.llms.huggingface import HuggingFaceLL
+from transformers import BitsAndBytesConfig
+from llama_index.core.prompts import PromptTemplate
+from llama_index.llms.huggingface import HuggingFaceLLM
+from llama_index.core import Settings
 
 
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -22,9 +23,13 @@ from rest_framework.permissions import IsAuthenticated
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 # from llama_index.core.query_engine import RetrieverQueryEngine
 
-
+device = "cuda"
 embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en")
 
+import replicate
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -50,7 +55,12 @@ class PromptView(APIView):
         # print(matrix_prod)
 
         # Top 5 results
-        top_k = np.argsort(matrix_prod, axis=0)[-5:]
+        try:
+            top_k = np.argsort(matrix_prod)[-2:]
+        except:
+            top_k = np.argsort(matrix_prod)
+
+   
         # print(top_k)
         # if len(qs) > 5:
         #     top_k = np.argsort(matrix_prod, axis=0)[-5:]
@@ -63,7 +73,7 @@ class PromptView(APIView):
 
         prompt_template = """Answer the following QUESTION based on the CONTEXT
                             given. If you do not know the answer and the CONTEXT doesn't
-                            contain the answer truthfully say "I DO NOT KNOW".
+                            contain the answer truthfully and return "I DO NOT KNOW".
 
                             CONTEXT:
                             {context}
@@ -73,15 +83,26 @@ class PromptView(APIView):
 
                             ANSWER:
                             """
+      
         text_input = prompt_template.replace("{context}", context)\
             .replace("{question}", query_str)
 
-        # inputs = tokenizer(text_input, return_tensors="pt").input_ids
-        # outputs = model.generate(inputs, max_length=100, temperature=0.7, do_sample=True)
-        # print(tokenizer.decode(outputs[0], skip_special_tokens=True))
-        # print(text_input)
-        print(text_input)
+        output = replicate.run(
+            "meta/llama-2-13b-chat",
+            input={
+                "debug": False,
+                "top_k": -1,
+                "top_p": 1,
+                "prompt": text_input,
+                "temperature": 0.05,
+                "system_prompt": "You are a helpful and truthful assistant, answer only if you know the answer. If you do not know the answer, truthfully say 'I do not know'.",
+                "max_new_tokens": 800,
+                "min_new_tokens": -1,
+                "repetition_penalty": 1
+            }
+        )
 
+        print("".join(output))
         return Response('123')
 
 prompt = PromptView.as_view()
