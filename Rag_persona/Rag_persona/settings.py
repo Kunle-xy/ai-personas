@@ -93,9 +93,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('PASSWORD'),
-        # 'HOST': 'host.docker.internal',
-
-        'HOST': 'localhost',
+        'HOST': 'host.docker.internal',
         'PORT': '5432',
     }
 }
