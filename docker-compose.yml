@@ -1,0 +1,29 @@
+
+version: '3'
+services:
+  # db:
+  #   image: postgres:16
+  #   container_name: postgres
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data:rw
+  #   environment:
+  #     DATABASE_URL: postgres://postgres:Mo444mo4o@172.17.0.1:5432/aipersona
+  #     # POSTGRES_USER: postgres
+  #     # POSTGRES_PASSWORD: Mo444mo4o
+  #     # POSTGRES_DB: aipersona
+  #   ports:
+  #     - "5432:5432"
+  web:
+    build: .
+    command: python Rag_persona/manage.py runserver 0.0.0.0:8000
+    container_name: api_service
+    volumes:
+      - .:/api_service
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # depends_on:
+    #   - db
+volumes:
+  postgres_data:

@@ -17,6 +17,9 @@ data = {
     "query": "using the way i wrote past emails, write an email to Dr Kyle asking for a letter of recommendation. What should I",
 }
 
+
+data = {
+    "query": "Compose a followup email to Dr Roy asking why he havent responded?"}
 post_doc = {
     "text": "I need habanero, so i have to go and get it."
 }

@@ -4,16 +4,8 @@ from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView, UpdateAPIView, ListCreateAPIView
 from rest_framework.permissions import AllowAny
 from .models import Document, CustomUser
-from transformers import AutoModelForCausalLM, AutoTokenizer
 # from transformers import T5ForConditionalGeneration, T5Tokenizer
 import numpy as np
-import torch
-from transformers import BitsAndBytesConfig
-from llama_index.core.prompts import PromptTemplate
-from llama_index.llms.huggingface import HuggingFaceLLM
-from llama_index.core import Settings
-
-
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializer import DocumentSerializer, CreateUserSerializer,\
       UpdateUserSerializer, CustomTokenObtainPairSerializer
