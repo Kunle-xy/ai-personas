@@ -12,8 +12,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
-      - path: ./Rag_persona/.env
-      required: true 
+      - path: .env
+      # required: true 
    
 
 volumes:
