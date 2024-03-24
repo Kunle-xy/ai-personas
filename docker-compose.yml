@@ -11,9 +11,17 @@ services:
       - "8000:8000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    env_file:
-      - path: .env
-      # required: true 
+    environment:
+      - REPLICATE_API_TOKEN=${REPLICATE_API_TOKEN}
+      - REPLICATE_API_URL=${REPLICATE_API_URL}
+      - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - PASSWORD=${PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+    # env_file:
+    #   - path: .env
+    #   # required: true 
    
 
 volumes:
