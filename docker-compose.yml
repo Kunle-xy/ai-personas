@@ -9,20 +9,27 @@ services:
       - .:/api_service
     ports:
       - "8000:8000"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+
+    env_file:
+      - .env
+    
     environment:
-      - REPLICATE_API_TOKEN=${REPLICATE_API_TOKEN}
-      - REPLICATE_API_URL=${REPLICATE_API_URL}
-      - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - PASSWORD=${PASSWORD}
-      - SECRET_KEY=${SECRET_KEY}
-    # env_file:
-    #   - path: .env
-    #   # required: true 
-   
+      - name=${DB_NAME}
+
+    depends_on:
+      - db
+  db:
+    image: postgres:16
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
 
 volumes:
   postgres_data:
