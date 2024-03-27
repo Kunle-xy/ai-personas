@@ -63,16 +63,25 @@ requests.post(endpoint,
 **Authentication is done using [Django rest framework JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)**
 
 ```sh
-endpoint = "http://localhost:8000/api/token/"
+
+#token auth
+endpoint_auth = "http://localhost:8000/api/token/"
 data = {
    email: placeholder@gmail.com,
    password: password,
 }
+response = requests.post(endpoint_auth, json = data)
 
-response = requests.post(endpoint, json = data)
+# token refresh
+endpoint_refresh = "http://localhost:8000/api/token/refresh/"
+data = {
+   'refresh': #$%^^&%KKOJO
+}
+response = requests.post(endpoint_auth, json = data)
 
 ```
-__`response.json() is a dictionary with 'refresh' and 'access' as dictionary keys`__
+__response.json() in both instances is a dictionary with 'refresh' and 'access' as dictionary keys__
+
 
 
 
