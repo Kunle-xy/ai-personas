@@ -36,7 +36,7 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
     # wait and check logs
     docker-compose -f logs
 
-    After application starts, goto [](http://localhost:8000/admin/) and login
+    After application starts, goto [admin page](http://localhost:8000/admin/) and login
     ```
 
     This command tells Docker Compose to use your `docker-compose.yml` and `.env` configuration files to build and start the application containers in detached mode.
