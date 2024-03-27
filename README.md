@@ -125,6 +125,20 @@ response = requests.get(endpoint_data,
 
 ## Text Generation and Question/Answering
 
+``` sh
+   data = {
+     "query": "Write a poem about a Bentley car using my style?"
+     }
+   # token is generated using a similar call from the above function calls.
+   response = requests.post(endpoint_prompt,
+                     headers={"Authorization": f"Bearer {token}"},
+                     data=data)
+                     
+   print(response.json())
+```
+
+
+
 
 
 
