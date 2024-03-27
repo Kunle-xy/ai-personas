@@ -40,7 +40,7 @@ Here, I assume port 8000 is mapped.
 import requests, json
 ```
 ## Create User
-ONLY EMAIL AND PASSWORD INPUTS ARE REQUIRED
+**ONLY EMAIL AND PASSWORD INPUTS ARE REQUIRED**
 
 ```sh
 endpoint = endpoint_prompt= "http://localhost:8000/api/createuser/"
