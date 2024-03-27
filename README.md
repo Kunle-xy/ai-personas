@@ -83,6 +83,39 @@ response = requests.post(endpoint_auth, json = data)
 __response.json() in both instances is a dictionary with 'refresh' and 'access' as dictionary keys__
 
 
+## Add data to Database
+**This endpoint performs CREATE and READ using post and get requests, respectively**
+
+```sh
+
+# Create new data to user's database
+
+endpoint_data = "http://localhost:8000/api/"
+endpoint_auth = "http://localhost:8000/api/token/"
+
+data = {
+   "text": """
+      In the heart of night, under a velvet sky,
+      Whispers of the moon, on a breeze, softly lie.
+      Stars, like scattered dreams, in darkness dance,
+      Weaving tales in silence, as if by chance.
+      """
+
+}
+response = requests.post(endpoint_auth, json = data)
+token = response.json()['access']
+response = requests.post(endpoint_data,
+                     headers={"Authorization": f"Bearer {token}",
+                              "Content-Type": "application/json"},
+                      json=post_doc)
+
+# List all user's data
+response = requests.get(endpoint_data,
+                headers={"Authorization": f"Bearer {token}"})
+
+
+```
+
 
 
 
