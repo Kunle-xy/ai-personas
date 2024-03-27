@@ -33,3 +33,17 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
     This command tells Docker Compose to use your `docker-compose.yml` and `.env` configuration files to build and start the application containers in detached mode.
 
     After the containers are up and running, your Django application should be accessible.
+
+# API EndPoints
+Here, I assume port 8000 is mapped.
+```sh
+import requests, json
+```
+## Create User
+```sh
+endpoint = endpoint_prompt= "http://localhost:8000/api/createuser/"
+```
+
+
+
+
