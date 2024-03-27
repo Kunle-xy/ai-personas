@@ -109,12 +109,21 @@ response = requests.post(endpoint_data,
                               "Content-Type": "application/json"},
                       json=post_doc)
 
+# Response returns a dictionary with keys listed in ~ ['uploaded_at', 'topic', 'vector', 'text']
+# topic is the first sentence
+# vector is the word embeddings
+# text as it
+# uploaded_at is the date created
+
 # List all user's data
 response = requests.get(endpoint_data,
                 headers={"Authorization": f"Bearer {token}"})
 
+# response format ditto
 
 ```
+
+## Text Generation and Question/Answering
 
 
 
