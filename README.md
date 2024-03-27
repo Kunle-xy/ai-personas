@@ -60,7 +60,7 @@ requests.post(endpoint,
 ```
 
 ## Authentication
-**Authentication is done using Django rest framework JWT**
+**Authentication is done using [Django rest framework JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)**
 
 ```sh
 endpoint = "http://localhost:8000/api/token/"
