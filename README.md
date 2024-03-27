@@ -72,7 +72,7 @@ data = {
 response = requests.post(endpoint, json = data)
 
 ```
-**response.json() is a dictionary with 'refresh' and 'access' as dictionary keys**
+`__response.json() is a dictionary with 'refresh' and 'access' as dictionary keys__`
 
 
 
