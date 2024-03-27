@@ -30,18 +30,18 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
 
     Finally, start your Dockerized application. Ensure the Docker daemon is running, and execute the following command:
 
+Start the Docker Compose services in detached mode with a custom `.env` file, and build images as necessary:
     ```sh
     docker-compose -f docker-compose.yml --env-file .env up -d --build
-
-    # wait and check logs
-    docker-compose -f logs
-
-    After application starts, goto [admin page](http://localhost:8000/admin/) and login
     ```
 
-    This command tells Docker Compose to use your `docker-compose.yml` and `.env` configuration files to build and start the application containers in detached mode.
+ Wait for a moment to allow the services to start up. Then, to check the logs of the services to ensure everything is running smoothly:
+    ```sh
+    docker-compose logs
+    ```
 
-    After the containers are up and running, your Django application should be accessible.
+After confirming the application has started successfully, access the admin page by navigating to [http://localhost:8000/admin/](http://localhost:8000/admin/) in your web browser and log in with your credentials to manage the application.
+
 
 # API EndPoints
 Here, I assume port 8000 is mapped.
