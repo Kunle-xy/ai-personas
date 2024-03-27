@@ -17,6 +17,7 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
     docker-compose run web python3 Rag_persona/manage.py makemigrations
     docker-compose run web python3 Rag_persona/manage.py migrate
     docker-compose run web python3 Rag_persona/manage.py createsuperuser
+    # creatine super user requires email and password input
 
     #creating a superuser account allows you to access the admin website provided by Django and to view all users and documents provided by users.
     ```
@@ -31,6 +32,11 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
 
     ```sh
     docker-compose -f docker-compose.yml --env-file .env up -d --build
+
+    # wait and check logs
+    docker-compose -f logs
+
+    After application starts, goto [](http://localhost:8000/admin/) and login
     ```
 
     This command tells Docker Compose to use your `docker-compose.yml` and `.env` configuration files to build and start the application containers in detached mode.
