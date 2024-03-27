@@ -31,12 +31,12 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
     Finally, start your Dockerized application. Ensure the Docker daemon is running, and execute the following command:
 
 Start the Docker Compose services in detached mode with a custom `.env` file, and build images as necessary:
-    ```sh
+    ```
     docker-compose -f docker-compose.yml --env-file .env up -d --build
     ```
 
  Wait for a moment to allow the services to start up. Then, to check the logs of the services to ensure everything is running smoothly:
-    ```sh
+    ```
     docker-compose logs
     ```
 
