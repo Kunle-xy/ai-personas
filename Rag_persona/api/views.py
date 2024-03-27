@@ -46,7 +46,7 @@ class PromptView(APIView):
         matrix_prod = prod / norm
         # print(matrix_prod)
 
-        # Top 5 results
+        # Top 2 results
         try:
             top_k = np.argsort(matrix_prod)[-2:]
         except:

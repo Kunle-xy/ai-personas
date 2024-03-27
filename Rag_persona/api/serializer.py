@@ -28,7 +28,7 @@ class DocumentSerializer(serializers.ModelSerializer):
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = [ 'email', 'password', 'first_name', 'last_name']
+        fields = [ 'email', 'password', 'first_name', 'last_name', 'username']
         extra_kwargs = {'password': {'write_only': True, 'required': True}}
 
     def validate(self, data):
