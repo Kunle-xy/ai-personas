@@ -6,32 +6,8 @@ This guide outlines the steps necessary to set up your development environment f
 
 Before you begin, ensure you have Docker and Python 3 installed on your machine. These tools are required to execute the setup steps.
 
-## Step 1: Prepare the Python Environment
 
-1. **Create a Virtual Environment**: Isolate your project dependencies by creating a virtual environment. Open your terminal and run:
-
-    ```sh
-    python3 -m venv env
-    ```
-
-2. **Activate the Virtual Environment**: Before installing the project dependencies, activate the virtual environment:
-
-    - On Windows:
-        ```cmd
-        .\env\Scripts\activate
-        ```
-    - On Unix or MacOS:
-        ```sh
-        source env/bin/activate
-        ```
-
-3. **Install Dependencies**: With the virtual environment activated, install the project dependencies:
-
-    ```sh
-    pip install -r requirements.txt
-    ```
-
-## Step 2: Set Up the Django Application
+## Step 1: Set Up the Django Application
 
 1. **Prepare Django Migrations**:
    
@@ -44,7 +20,7 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
 
     These commands generate the necessary database migration files and apply them, setting up the database schema.
 
-## Step 3: Launch the Application
+## Step 2: Launch the Application
 
 1. **Start the Application**:
 
