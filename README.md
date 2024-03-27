@@ -42,6 +42,18 @@ import requests, json
 ## Create User
 ```sh
 endpoint = endpoint_prompt= "http://localhost:8000/api/createuser/"
+data = {
+   email: placeholder@gmail.com,
+   password: password,
+   first_name: first,
+   second_name: second,
+}
+
+requests.post(endpoint,
+   headers={
+   "Content-Type": "application/json"},
+   json=data
+)
 ```
 
 
