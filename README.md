@@ -16,6 +16,9 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
     ```sh
     docker-compose run web python3 Rag_persona/manage.py makemigrations
     docker-compose run web python3 Rag_persona/manage.py migrate
+    docker-compose run web python3 Rag_persona/manage.py createsuperuser
+
+    #creating a superuser account allows you to access the admin website provided by Django and to view all users and documents provided by users.
     ```
 
     These commands generate the necessary database migration files and apply them, setting up the database schema.
