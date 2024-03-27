@@ -43,7 +43,7 @@ import requests, json
 **ONLY EMAIL AND PASSWORD INPUTS ARE REQUIRED**
 
 ```sh
-endpoint = endpoint_prompt= "http://localhost:8000/api/createuser/"
+endpoint = "http://localhost:8000/api/createuser/"
 data = {
    email: placeholder@gmail.com,
    password: password,
@@ -58,6 +58,21 @@ requests.post(endpoint,
    json=data
 )
 ```
+
+## Authentication
+**Authentication is done using Django rest framework JWT**
+
+```sh
+endpoint = "http://localhost:8000/api/token/"
+data = {
+   email: placeholder@gmail.com,
+   password: password,
+}
+
+response = requests.post(endpoint, json = data)
+
+```
+**response.json() is a dictionary with 'refresh' and 'access' as dictionary keys**
 
 
 
