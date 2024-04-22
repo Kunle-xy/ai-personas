@@ -6,8 +6,9 @@ endpoint_auth= "http://localhost:8000/api/token/"
 refresh = "http://localhost:8000/api/token/refresh/"
 endpoint_prompt= "http://localhost:8000/api/query/"
 
-username = 'xxxxxxxx' #input("Username: ")
-password = 'xxxxxx'  #getpass("Password: ")
+username = 'oguntoyek@gmail.com' #input("Username: ")
+username = 'oguntoye@iastate.edu'
+password = 'Mo444mo4o'  #getpass("Password: ")
 
 # get = requests.post(endpoint)
 
@@ -45,8 +46,12 @@ tmp = {
 #    json=post_data
 # )
 
-# data = {
-#     "query": "whrite an email to Dr May using my style to ask for a letter of recommendation. What should I say?",}
+
+#DEMO BEFORE AND AFTER DATABASE UPDATE.
+data = {
+    "query": "what is my opinion about Trump?",
+    }
+
 # post_doc = {
 #     "text": "I need habanero, so i have to go and get it."
 # }
@@ -63,16 +68,17 @@ tmp = {
 
 # }
 
-data = {
-     "query": "what happens at night?",
-     }
+# data = {
+#      "query": "what happens at night?",
+#      }
 
 if get.status_code == 200:
     token = get.json()['access']
+    # print(token)
     get = requests.post(endpoint_prompt,
                        headers={"Authorization": f"Bearer {token}"},
                         data=data)
-    print(get.json())
+    print(get)
 else:
     print("Authentication failed")
 
