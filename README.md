@@ -17,6 +17,7 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
     docker-compose run web python3 Rag_persona/manage.py makemigrations
     docker-compose run web python3 Rag_persona/manage.py migrate
     docker-compose run web python3 Rag_persona/manage.py createsuperuser
+    # creatine super user requires email and password input
 
     #creating a superuser account allows you to access the admin website provided by Django and to view all users and documents provided by users.
     ```
@@ -29,13 +30,18 @@ Before you begin, ensure you have Docker and Python 3 installed on your machine.
 
     Finally, start your Dockerized application. Ensure the Docker daemon is running, and execute the following command:
 
-    ```sh
+Start the Docker Compose services in detached mode with a custom `.env` file, and build images as necessary:
+    ```
     docker-compose -f docker-compose.yml --env-file .env up -d --build
     ```
 
-    This command tells Docker Compose to use your `docker-compose.yml` and `.env` configuration files to build and start the application containers in detached mode.
+ Wait for a moment to allow the services to start up. Then, to check the logs of the services to ensure everything is running smoothly:
+    ```
+    docker-compose logs
+    ```
 
-    After the containers are up and running, your Django application should be accessible.
+After confirming the application has started successfully, access the admin page by navigating to [http://localhost:8000/admin/](http://localhost:8000/admin/) in your web browser and log in with your credentials to manage the application.
+
 
 # API EndPoints
 Here, I assume port 8000 is mapped.
