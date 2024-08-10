@@ -1,6 +1,6 @@
 # Environment Setup Instructions
 
-This guide outlines the steps necessary to set up your development environment for the project. Please follow the instructions in the order provided.
+This outlines the steps required to set up your development environment for this project. Please follow the instructions in the order provided.
 
 ## Prerequisites
 
